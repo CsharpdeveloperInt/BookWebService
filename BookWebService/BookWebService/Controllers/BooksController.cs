@@ -25,11 +25,17 @@ namespace BookWebService.Controllers
             return _db.Books;
         }
 
-        // GET: api/Books/5
+
+
+        /// <summary>
+        /// Получает конкретную книгу по идентификатору (GET)
+        /// </summary>
+        /// <param name="id">Идентификатор книги</param>
+        /// <returns>Возвращает объет книги</returns>
         [ResponseType(typeof(Books))]
         public async Task<IHttpActionResult> GetBooks(int id)
         {
-            Books books = await _db.Books.FindAsync(id);
+            var books = await _db.Books.FindAsync(id);
             if (books == null)
             {
                 return NotFound();
@@ -38,7 +44,14 @@ namespace BookWebService.Controllers
             return Ok(books);
         }
 
-        // PUT: api/Books/5
+
+
+        /// <summary>
+        /// Метод сохраняет значения в БД по опред. книги (PUT)
+        /// </summary>
+        /// <param name="id">Идентификатор книги</param>
+        /// <param name="books">Объект класса Books</param>
+        /// <returns>Сохраняет данные в БД</returns>
         [ResponseType(typeof(void))]
         public async Task<IHttpActionResult> PutBooks(int id, Books books)
         {
@@ -64,16 +77,19 @@ namespace BookWebService.Controllers
                 {
                     return NotFound();
                 }
-                else
-                {
-                    throw;
-                }
+                throw;
             }
 
             return StatusCode(HttpStatusCode.NoContent);
         }
 
-        // POST: api/Books
+
+
+        /// <summary>
+        /// Метод добавляет в БД запись с данными (POST)
+        /// </summary>
+        /// <param name="books">Объект класса Books</param>
+        /// <returns>Возвращает результат запроса</returns>
         [ResponseType(typeof(Books))]
         public async Task<IHttpActionResult> PostBooks(Books books)
         {
@@ -88,11 +104,17 @@ namespace BookWebService.Controllers
             return CreatedAtRoute("DefaultApi", new { id = books.Id }, books);
         }
 
-        // DELETE: api/Books/5
+
+
+        /// <summary>
+        /// Метод удаляет из БД запись (DELETE)
+        /// </summary>
+        /// <param name="id">Идентификатор книги</param>
+        /// <returns>Возвращает результат запроса</returns>
         [ResponseType(typeof(Books))]
         public async Task<IHttpActionResult> DeleteBooks(int id)
         {
-            Books books = await _db.Books.FindAsync(id);
+            var books = await _db.Books.FindAsync(id);
             if (books == null)
             {
                 return NotFound();
@@ -104,6 +126,12 @@ namespace BookWebService.Controllers
             return Ok(books);
         }
 
+
+
+        /// <summary>
+        /// Метод освобождения контекста БД
+        /// </summary>
+        /// <param name="disposing">Признак</param>
         protected override void Dispose(bool disposing)
         {
             if (disposing)
@@ -113,6 +141,12 @@ namespace BookWebService.Controllers
             base.Dispose(disposing);
         }
 
+
+        /// <summary>
+        /// Метод для получения кол-во книг в БД
+        /// </summary>
+        /// <param name="id">Идентификатор книги</param>
+        /// <returns>Возвращает True если книги больше одной штуки</returns>
         private bool BooksExists(int id)
         {
             return _db.Books.Count(e => e.Id == id) > 0;

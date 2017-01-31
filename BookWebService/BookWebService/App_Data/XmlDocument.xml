@@ -481,11 +481,69 @@
             </summary>
             <param name="documentPath">The physical path to XML document.</param>
         </member>
+        <member name="T:BookWebService.Controllers.BooksController">
+            <summary>
+            Контроллер управление книгами
+            </summary>
+        </member>
         <member name="M:BookWebService.Controllers.BooksController.GetBooks">
             <summary>
             Получает все книги (GET)
             </summary>
             <returns>Массив класса books</returns>
+        </member>
+        <member name="M:BookWebService.Controllers.BooksController.GetBooks(System.Int32)">
+            <summary>
+            Получает конкретную книгу по идентификатору (GET)
+            </summary>
+            <param name="id">Идентификатор книги</param>
+            <returns>Возвращает объет книги</returns>
+        </member>
+        <member name="M:BookWebService.Controllers.BooksController.PutBooks(System.Int32,BookWebService.Models.Books)">
+            <summary>
+            Метод сохраняет значения в БД по опред. книги (PUT)
+            </summary>
+            <param name="id">Идентификатор книги</param>
+            <param name="books">Объект класса Books</param>
+            <returns>Сохраняет данные в БД</returns>
+        </member>
+        <member name="M:BookWebService.Controllers.BooksController.PostBooks(BookWebService.Models.Books)">
+            <summary>
+            Метод добавляет в БД запись с данными (POST)
+            </summary>
+            <param name="books">Объект класса Books</param>
+            <returns>Возвращает результат запроса</returns>
+        </member>
+        <member name="M:BookWebService.Controllers.BooksController.DeleteBooks(System.Int32)">
+            <summary>
+            Метод удаляет из БД запись (DELETE)
+            </summary>
+            <param name="id">Идентификатор книги</param>
+            <returns>Возвращает результат запроса</returns>
+        </member>
+        <member name="M:BookWebService.Controllers.BooksController.Dispose(System.Boolean)">
+            <summary>
+            Метод освобождения контекста БД
+            </summary>
+            <param name="disposing">Признак</param>
+        </member>
+        <member name="M:BookWebService.Controllers.BooksController.BooksExists(System.Int32)">
+            <summary>
+            Метод для получения кол-во книг в БД
+            </summary>
+            <param name="id">Идентификатор книги</param>
+            <returns>Возвращает True если книги больше одной штуки</returns>
+        </member>
+        <member name="T:BookWebService.Controllers.HomeController">
+            <summary>
+            Домашний контроллер
+            </summary>
+        </member>
+        <member name="M:BookWebService.Controllers.HomeController.Index">
+            <summary>
+            Отображение главной страницы
+            </summary>
+            <returns>Возвращает вид</returns>
         </member>
     </members>
 </doc>
