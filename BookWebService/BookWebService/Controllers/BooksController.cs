@@ -146,7 +146,7 @@ namespace BookWebService.Controllers
         /// Метод для получения кол-во книг в БД
         /// </summary>
         /// <param name="id">Идентификатор книги</param>
-        /// <returns>Возвращает True если книги больше одной штуки</returns>
+        /// <returns>Возвращает True если книги больше нуля</returns>
         private bool BooksExists(int id)
         {
             return _db.Books.Count(e => e.Id == id) > 0;

@@ -532,7 +532,7 @@
             Метод для получения кол-во книг в БД
             </summary>
             <param name="id">Идентификатор книги</param>
-            <returns>Возвращает True если книги больше одной штуки</returns>
+            <returns>Возвращает True если книги больше нуля</returns>
         </member>
         <member name="T:BookWebService.Controllers.HomeController">
             <summary>
